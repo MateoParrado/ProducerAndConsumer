@@ -4,6 +4,18 @@ import java.util.Random;
 
 public class Consumer extends Thread{
 	
+	private Consumer() {}
+	
+	public static Consumer getInstance() {
+		return ConsumerInstantiator.INSTANCE;
+	}
+	
+	
+	//this makes sure that the singleton is called only once without violating thread safety
+	private static class ConsumerInstantiator {
+		public static Consumer INSTANCE = new Consumer();
+	}
+	
 	public void run() {	
 	
 		while(true) {

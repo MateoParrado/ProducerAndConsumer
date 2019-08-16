@@ -7,8 +7,8 @@ public class Panel extends JPanel{
 	//synchronizes production, consumption, and the movement of the blocks downwards
 	public static Object key = new Object();
 	
-	private static final Consumer consumer = new Consumer();
-	private static final Producer producer = new Producer();
+	private static Consumer consumer;
+	private static Producer producer;
 	
 	private static Product[] products;
 	
@@ -19,6 +19,9 @@ public class Panel extends JPanel{
 	private static Product touchingBottom = null;
 	
 	public Panel() {
+		consumer = Consumer.getInstance();
+		producer = Producer.getInstance();
+		
 		products = new Product[Main.MAX_PROD];
 		
 		producer.start();
